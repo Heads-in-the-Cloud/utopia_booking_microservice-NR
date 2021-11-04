@@ -22,7 +22,7 @@ public class BookingController {
 
     @PostMapping(path = "/add")
     public ResponseEntity<Booking> addBooking() {
-        return ResponseEntity.ok(bookingService.addBooking());
+        return ResponseEntity.status(201).body(bookingService.addBooking());
     }
 
     @DeleteMapping(path = "/{id}/delete")

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/api/payment")
+@RequestMapping(path = "/api/bookings/payment")
 public class BookingPaymentController {
 
     @Autowired
@@ -31,7 +31,7 @@ public class BookingPaymentController {
 
     @PostMapping(path = "/add")
     public ResponseEntity<BookingPayment> addBookingPayment(@RequestBody BookingPayment bookingPayment) {
-        return ResponseEntity.ok(bookingPaymentService.addBookingPayment(bookingPayment));
+        return ResponseEntity.status(201).body(bookingPaymentService.addBookingPayment(bookingPayment));
     }
 
     @DeleteMapping(path="/delete/{id}")

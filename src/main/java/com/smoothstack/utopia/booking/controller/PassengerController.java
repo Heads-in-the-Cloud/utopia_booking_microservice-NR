@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/api/passengers")
+@RequestMapping(path = "/api/bookings/passenger")
 public class PassengerController {
 
     @Autowired
@@ -24,8 +24,7 @@ public class PassengerController {
 
     @PostMapping(path = "/add")
     public ResponseEntity<Passenger> addPassenger(@RequestBody Passenger passenger) {
-        Passenger passenger1 = passengerService.addPassenger(passenger);
-        return ResponseEntity.ok(passenger1);
+        return ResponseEntity.status(201).body(passengerService.addPassenger(passenger));
     }
 
     @PutMapping(path = "/{id}/update")
