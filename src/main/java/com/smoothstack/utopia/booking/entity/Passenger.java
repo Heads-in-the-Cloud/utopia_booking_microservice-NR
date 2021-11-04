@@ -20,7 +20,7 @@ public class Passenger {
     private int id;
     @ManyToOne(optional = false)
     @JoinColumn(name = "booking_id")
-    private Booking booking;
+    private Booking bookingId;
     private String givenName;
     private String familyName;
     private Date dob;
@@ -32,12 +32,12 @@ public class Passenger {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Passenger passenger = (Passenger) o;
-        return id == passenger.id && booking.equals(passenger.booking) && givenName.equals(passenger.givenName) && familyName.equals(passenger.familyName) && dob.equals(
+        return id == passenger.id && bookingId.equals(passenger.bookingId) && givenName.equals(passenger.givenName) && familyName.equals(passenger.familyName) && dob.equals(
                 passenger.dob) && gender.equals(passenger.gender) && address.equals(passenger.address);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, booking, givenName, familyName, dob, gender, address);
+        return Objects.hash(id, bookingId, givenName, familyName, dob, gender, address);
     }
 }

@@ -1,6 +1,7 @@
 package com.smoothstack.utopia.booking.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -10,6 +11,7 @@ import javax.persistence.*;
 @Setter
 @ToString
 @Entity
+@NoArgsConstructor
 @Table(name = "booking")
 public class Booking {
     @Id
@@ -17,4 +19,8 @@ public class Booking {
     private Integer id;
     private boolean isActive;
     private String confirmationCode;
+
+    public Booking(int id) {
+        this.id = id;
+    }
 }

@@ -11,12 +11,15 @@ import java.util.Objects;
 @Setter
 @Table(name = "booking_guest")
 @Entity
+@IdClass(BookingGuestId.class)
 public class BookingGuest implements Serializable {
     @ManyToOne(optional = false)
     @JoinColumn(name = "booking_id", nullable = false)
     @Id
-    private Booking booking;
+    private Booking bookingId;
+    @Id
     private String contactEmail;
+    @Id
     private String contactPhone;
 
     @Override
@@ -24,11 +27,11 @@ public class BookingGuest implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BookingGuest that = (BookingGuest) o;
-        return booking.equals(that.booking) && contactEmail.equals(that.contactEmail) && contactPhone.equals(that.contactPhone);
+        return bookingId.equals(that.bookingId) && contactEmail.equals(that.contactEmail) && contactPhone.equals(that.contactPhone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(booking, contactEmail, contactPhone);
+        return Objects.hash(bookingId, contactEmail, contactPhone);
     }
 }
