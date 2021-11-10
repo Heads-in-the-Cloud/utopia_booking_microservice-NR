@@ -4,6 +4,7 @@ import com.smoothstack.utopia.booking.entity.BookingAgent;
 import com.smoothstack.utopia.booking.service.BookingAgentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,17 +18,20 @@ public class BookingAgentController {
     private BookingAgentService bookingAgentService;
 
     @GetMapping(path = "/all")
+    @PreAuthorize("hasAuthority('Administrator')")
     public ResponseEntity<List<BookingAgent>> getAllBookingAgent() {
         return ResponseEntity.ok(bookingAgentService.getAllBookingAgent());
     }
 
     @GetMapping(path = "/{id}")
+    @PreAuthorize("hasAuthority('Administrator')")
     public ResponseEntity<BookingAgent> getBookingAgentById(@PathVariable int id) {
         Optional<BookingAgent> bookingAgent = bookingAgentService.getBookingAgentById(id);
         return bookingAgent.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.badRequest().build());
     }
 
     @PostMapping(path = "/add")
+    @PreAuthorize("hasAuthority('Administrator')")
     public ResponseEntity<BookingAgent> addBookingAgent(@RequestBody BookingAgent bookingAgent) {
         return ResponseEntity.status(201).body(bookingAgentService.addBookingAgent(bookingAgent));
     }
