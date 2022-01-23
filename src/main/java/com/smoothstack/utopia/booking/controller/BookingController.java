@@ -40,4 +40,9 @@ public class BookingController {
     public ResponseEntity<Booking> updateBooking(@PathVariable("id") Integer id, @RequestBody Booking booking) {
         return ResponseEntity.ok(bookingService.updateBooking(id, booking));
     }
+
+    @GetMapping(path = "/health")
+    public ResponseEntity<String> health() {
+        return ResponseEntity.ok("OK");
+    }
 }
