@@ -5,6 +5,8 @@ import com.smoothstack.utopia.booking.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.List;
 import java.util.Random;
 
@@ -13,6 +15,11 @@ public class BookingService {
 
     @Autowired
     private BookingRepository bookingRepository;
+
+    private final Random random = SecureRandom.getInstanceStrong();
+
+    public BookingService() throws NoSuchAlgorithmException {
+    }
 
     public List<Booking> getAllBookings() {
         return bookingRepository.findAll();
@@ -29,7 +36,6 @@ public class BookingService {
         int leftLimit = 97; // letter 'a'
         int rightLimit = 122; // letter 'z'
         int targetStringLength = 25;
-        Random random = new Random();
         StringBuilder buffer = new StringBuilder(targetStringLength);
         for (int i = 0; i < targetStringLength; i++) {
             int randomLimitedInt = leftLimit + (int)

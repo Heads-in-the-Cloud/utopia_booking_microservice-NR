@@ -18,17 +18,4 @@ public class BookingUser implements Serializable {
     private Booking bookingId;
     @Id
     private int userId;
-
-    //    @Override
-    //    public boolean equals(Object o) {
-    //        if (this == o) return true;
-    //        if (o == null || getClass() != o.getClass()) return false;
-    //        BookingUser that = (BookingUser) o;
-    //        return bookingId.equals(that.bookingId) && userId.equals(that.userId);
-    //    }
-    //
-    //    @Override
-    //    public int hashCode() {
-    //        return Objects.hash(bookingId, userId);
-    //    }
 }

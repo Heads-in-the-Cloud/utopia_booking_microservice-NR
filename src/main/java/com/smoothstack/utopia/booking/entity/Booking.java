@@ -17,7 +17,9 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    @Column(name = "is_active")
     private boolean isActive;
+    @Column(name = "confirmation_code")
     private String confirmationCode;
 
     public Booking(int id) {
