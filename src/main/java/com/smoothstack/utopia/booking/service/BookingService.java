@@ -5,8 +5,6 @@ import com.smoothstack.utopia.booking.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.util.List;
 import java.util.Random;
 
@@ -16,10 +14,7 @@ public class BookingService {
     @Autowired
     private BookingRepository bookingRepository;
 
-    private final Random random = SecureRandom.getInstanceStrong();
-
-    public BookingService() throws NoSuchAlgorithmException {
-    }
+    private final Random random = new Random();
 
     public List<Booking> getAllBookings() {
         return bookingRepository.findAll();
