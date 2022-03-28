@@ -97,8 +97,8 @@ pipeline {
                 sh 'docker rmi ${API_REPO_NAME}:latest'
                 sh 'docker rmi ${ECR_REPO}/${API_REPO_NAME}:latest'
                 sh 'docker rmi ${ECR_REPO}/${API_REPO_NAME}:$COMMIT_HASH'
-                sh 'docker rmi ${ARTIFACTORY_REPO}/${API_REPO_NAME}:latest'
-                sh 'docker rmi ${ARTIFACTORY_REPO}/${API_REPO_NAME}:$COMMIT_HASH'
+                sh 'docker rmi ${ARTIFACTORY_REPO}:latest'
+                sh 'docker rmi ${ARTIFACTORY_REPO}:$COMMIT_HASH'
                 sh 'unset AWS_PROFILE'
             }
         }
